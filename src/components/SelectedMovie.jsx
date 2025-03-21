@@ -1,24 +1,20 @@
-import { useState } from "react";
+export function SelectedMovie({ selectedOption, onChange }) {
+  const movies = [
+    { title: "Avatar", year: "2009", director: "James Cameron" },
+    { title: "Inception", year: "2010", director: "Christopher Nolan" },
+    { title: "Interstellar", year: "2014", director: "Christopher Nolan" },
+    {
+      title: "The Shawshank Redemption",
+      year: "1994",
+      director: "Frank Darabont",
+    },
+    { title: "Pulp Fiction", year: "1994", director: "Quentin Tarantino" },
+    { title: "Parasite", year: "2019", director: "Bong Joon-ho" },
+  ];
 
-const movies = [
-  { title: "Avatar", year: "2009", director: "James Cameron" },
-  { title: "Inception", year: "2010", director: "Christopher Nolan" },
-  { title: "Interstellar", year: "2014", director: "Christopher Nolan" },
-  {
-    title: "The Shawshank Redemption",
-    year: "1994",
-    director: "Frank Darabont",
-  },
-  { title: "Pulp Fiction", year: "1994", director: "Quentin Tarantino" },
-  { title: "Parasite", year: "2019", director: "Bong Joon-ho" },
-];
-
-export default function SelectedMovie() {
-  // refactor โดยใช้ .map() เพื่อแสดงรายการหนังที่เลือก (not started)
-  const [selectedOption, setSelectedOption] = useState("");
-
-  const handleChange = (e) => {
-    setSelectedOption(e.target.value);
+  // refactor โดยใช้ .map() เพื่อแสดงรายการหนังที่เลือก
+  const handleSelectedMovieChange = (e) => {
+    onChange(e.target.value);
   };
 
   return (
@@ -39,7 +35,7 @@ export default function SelectedMovie() {
                 className="w-4 h-4 bg-black border-black"
                 value={item.title}
                 checked={selectedOption === item.title}
-                onChange={handleChange}
+                onChange={handleSelectedMovieChange}
               />
               <div className="flex flex-col">
                 <div>
