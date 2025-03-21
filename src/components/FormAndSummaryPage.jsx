@@ -1,3 +1,4 @@
+import "boxicons";
 import { useState } from "react";
 import { SelectedMovie } from "./SelectedMovie";
 
@@ -54,20 +55,25 @@ export function FormPage({ onSubmit }) {
   const formPage =
     "flex flex-col w-min-content w-120 h-min-content rounded-b-5xl bg-white shadow-xl my-10";
   const movieSurveyHeader =
-    "text-3xl font-bold bg-purple-600 text-white w-full p-6";
+    "flex flex-row items-center gap-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-3xl font-bold bg-purple-600 text-white w-full p-6";
   const formContainer = "flex flex-col gap-8 p-6 bg-white";
   const inputContainer = "flex flex-col gap-2";
   const primaryInputBox = "border border-gray-300 rounded-md p-2";
   const textareaInputBox =
-    "resize-y border border-gray-300 rounded-md p-2 w-full";
+    "resize-y border border-gray-300 rounded-md p-2 w-full min-h-[100px]";
   const resetButton =
-    "bg-white border border-gray-300 hover:bg-gray-100 text-black py-2 px-4 rounded";
-  const submitButton = "bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-2 px-4 rounded";
+    "flex flex-row items-center gap-1 justify-center bg-white border border-gray-300 hover:bg-gray-100 text-black py-2 px-4 rounded";
+  const submitButton =
+    "flex flex-row items-center gap-2 justify-center bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-2 px-4 rounded";
   const buttonContainer = "flex justify-between border-t border-gray-300 pt-6";
 
   return (
     <div className={formPage} onSubmit={handleSubmit} onReset={handleReset}>
-      <h1 className={movieSurveyHeader}>Movie Survey</h1>
+      <div>
+        <h1 className={movieSurveyHeader}>
+          <box-icon name="film" color="white" size="md"></box-icon>Movie Survey
+        </h1>
+      </div>
       <form className={formContainer}>
         <div className={inputContainer}>
           <label htmlFor="name">
@@ -124,11 +130,12 @@ export function FormPage({ onSubmit }) {
         <div className={buttonContainer}>
           <div>
             <button type="reset" className={resetButton}>
-              รีเซ็ต
+              <box-icon name="repost"></box-icon>รีเซ็ต
             </button>
           </div>
           <div>
             <button type="submit" className={submitButton}>
+              <box-icon name="send" flip="vertical" color="white"></box-icon>
               ส่งแบบสำรวจ
             </button>
           </div>
@@ -142,18 +149,24 @@ export function SummaryPage({ data }) {
   const formPage =
     "flex flex-col w-min-content w-120 h-min-content rounded-b-5xl bg-white shadow-xl my-10";
   const movieSurveyHeader =
-    "bg-gradient-to-r from-purple-500 to-indigo-500 text-3xl font-bold bg-purple-600 text-white w-full p-6";
-  const summaryContainer = "flex flex-col gap-4 p-4 bg-green-50 border border-green-200 rounded-xl m-6";
+    "flex flex-row items-center gap-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-3xl font-bold bg-purple-600 text-white w-full p-6";
+  const summaryContainer =
+    "flex flex-col gap-4 p-4 bg-green-50 border border-green-200 rounded-xl m-6";
   const buttonStyle =
     "bg-black text-white py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition mx-6 mb-6";
 
   return (
     <>
       <div className={formPage}>
-        <h1 className={movieSurveyHeader}>Movie Survey</h1>
+        <h1 className={movieSurveyHeader}>
+          <box-icon name="film" color="white" size="md"></box-icon>Movie Survey
+        </h1>
         <div className={summaryContainer}>
-          <h4 className="text-lg text-green-900">ส่งแบบสำรวจสำเร็จ!</h4>
-          <div className="flex flex-row gap-16 border-b border-gray-300 pb-4">
+          <h4 className="flex flex-row gap-2 items-center text-lg text-green-900">
+            <box-icon name="check-circle" color="green-900"></box-icon>
+            ส่งแบบสำรวจสำเร็จ!
+          </h4>
+          <div className="flex flex-row gap-16">
             <div className="flex flex-col gap-2 text-gray-500">
               <p>ชื่อ:</p>
               <p>อีเมล:</p>
@@ -166,7 +179,7 @@ export function SummaryPage({ data }) {
             </div>
           </div>
           {data.comment && (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 border-t border-gray-300 pt-4">
               <p className="text-gray-500">ความคิดเห็น:</p>
               <p className="bg-gray-50 p-4">{data.comment}</p>
             </div>
@@ -176,9 +189,8 @@ export function SummaryPage({ data }) {
           className={buttonStyle}
           onClick={() => window.location.reload()}
         >
-          ทำแบบสำรวจใหม่
+          <box-icon name="repost" color="white"></box-icon>ทำแบบสำรวจใหม่
         </button>
-
       </div>
     </>
   );
