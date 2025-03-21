@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { FormPage } from "./components/FormPage";
-import { SummaryPage } from "./components/SummaryPage";
+import { FormPage, SummaryPage } from "./components/FormAndSummaryPage";
 
 const bodyStyle =
   "flex flex-col justify-center items-center min-h-screen bg-gray-200";

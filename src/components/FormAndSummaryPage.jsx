@@ -1,20 +1,6 @@
 import { useState } from "react";
 import { SelectedMovie } from "./SelectedMovie";
 
-const formPage =
-  "flex flex-col w-min-content w-120 h-min-content rounded-b-5xl bg-white shadow-xl my-10";
-const movieSurveyHeader =
-  "text-3xl font-bold bg-purple-600 text-white w-full p-6";
-const formContainer = "flex flex-col gap-8 p-6 bg-white";
-const inputContainer = "flex flex-col gap-2";
-const primaryInputBox = "border border-gray-300 rounded-md p-2";
-const textareaInputBox =
-  "resize-y border border-gray-300 rounded-md p-2 w-full";
-const resetButton =
-  "bg-white border border-gray-300 hover:bg-gray-100 text-black py-2 px-4 rounded";
-const submitButton = "bg-purple-500 text-white py-2 px-4 rounded";
-const buttonContainer = "flex justify-between border-t border-gray-300 pt-6";
-
 export function FormPage({ onSubmit }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -64,6 +50,20 @@ export function FormPage({ onSubmit }) {
       onSubmit({ name, email, comment, selectedOption });
     }
   };
+
+  const formPage =
+    "flex flex-col w-min-content w-120 h-min-content rounded-b-5xl bg-white shadow-xl my-10";
+  const movieSurveyHeader =
+    "text-3xl font-bold bg-purple-600 text-white w-full p-6";
+  const formContainer = "flex flex-col gap-8 p-6 bg-white";
+  const inputContainer = "flex flex-col gap-2";
+  const primaryInputBox = "border border-gray-300 rounded-md p-2";
+  const textareaInputBox =
+    "resize-y border border-gray-300 rounded-md p-2 w-full";
+  const resetButton =
+    "bg-white border border-gray-300 hover:bg-gray-100 text-black py-2 px-4 rounded";
+  const submitButton = "bg-purple-500 text-white py-2 px-4 rounded";
+  const buttonContainer = "flex justify-between border-t border-gray-300 pt-6";
 
   return (
     <div className={formPage} onSubmit={handleSubmit} onReset={handleReset}>
@@ -135,5 +135,20 @@ export function FormPage({ onSubmit }) {
         </div>
       </form>
     </div>
+  );
+}
+
+export function SummaryPage() {
+  const formPage =
+    "flex flex-col w-min-content w-120 h-min-content rounded-b-5xl bg-white shadow-xl my-10";
+  const movieSurveyHeader =
+    "text-3xl font-bold bg-purple-600 text-white w-full p-6";
+
+  return (
+    <>
+      <div className={formPage}>
+        <h1 className={movieSurveyHeader}>Movie Survey</h1>
+      </div>
+    </>
   );
 }
