@@ -25,11 +25,11 @@ export function FormPage({ onSubmit }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     let newErrors = { name: "", email: "", selectedOption: "" };
-  
+
     let emailValidation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
     newErrors.name = name?.trim() ? "" : "โปรดใส่ชื่อของคุณ";
     newErrors.email = email?.trim()
       ? emailValidation.test(email.trim())
@@ -37,14 +37,13 @@ export function FormPage({ onSubmit }) {
         : "รูปแบบอีเมลไม่ถูกต้อง"
       : "โปรดใส่อีเมลของคุณ";
     newErrors.selectedOption = selectedOption ? "" : "กรุณาเลือกหนังที่คุณชอบ";
-  
+
     setError(newErrors);
-  
+
     if (!newErrors.name && !newErrors.email && !newErrors.selectedOption) {
       onSubmit({ name, email, comment, selectedOption });
     }
   };
-    
 
   const formPage =
     "flex flex-col w-min-content w-120 h-min-content rounded-b-5xl bg-white shadow-xl my-10";
@@ -52,7 +51,9 @@ export function FormPage({ onSubmit }) {
     "flex flex-row items-center gap-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-3xl font-bold bg-purple-600 text-white w-full p-6";
   const formContainer = "flex flex-col gap-8 p-6 bg-white";
   const inputContainer = "flex flex-col gap-2";
-  const primaryInputBox = "border border-gray-300 rounded-md p-2";
+  const primaryInputBox = `border ${
+    error.name ? "border-red-500" : "border-gray-300"
+  } rounded-md p-2`;
   const textareaInputBox =
     "resize-y border border-gray-300 rounded-md p-2 w-full min-h-[100px]";
   const resetButton =
