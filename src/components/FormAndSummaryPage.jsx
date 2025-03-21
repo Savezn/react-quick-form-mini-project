@@ -25,32 +25,26 @@ export function FormPage({ onSubmit }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (name === "") {
-      setError("โปรดใส่ชื่อของคุณ");
-    } else {
-      setError("");
-    }
-
-    const emailValidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (email === "") {
-      setError("โปรดใส่อีเมลของคุณ");
-    } else if (!emailValidation.test(email)) {
-      setError("รูปแบบอีเมลไม่ถูกต้อง");
-    } else {
-      setError("");
-    }
-
-    if (selectedOption === "") {
-      setError("กรุณาเลือกหนังที่คุณชอบ");
-    } else {
-      setError("");
-    }
-
-    if (name !== "" && email !== "" && selectedOption !== "") {
+  
+    let newErrors = { name: "", email: "", selectedOption: "" };
+  
+    let emailValidation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+    newErrors.name = name?.trim() ? "" : "โปรดใส่ชื่อของคุณ";
+    newErrors.email = email?.trim()
+      ? emailValidation.test(email.trim())
+        ? ""
+        : "รูปแบบอีเมลไม่ถูกต้อง"
+      : "โปรดใส่อีเมลของคุณ";
+    newErrors.selectedOption = selectedOption ? "" : "กรุณาเลือกหนังที่คุณชอบ";
+  
+    setError(newErrors);
+  
+    if (!newErrors.name && !newErrors.email && !newErrors.selectedOption) {
       onSubmit({ name, email, comment, selectedOption });
     }
   };
+    
 
   const formPage =
     "flex flex-col w-min-content w-120 h-min-content rounded-b-5xl bg-white shadow-xl my-10";
@@ -89,7 +83,7 @@ export function FormPage({ onSubmit }) {
             value={name}
             onChange={updateName}
           />
-          {error && <p className="text-red-600">{error}</p>}
+          {error && <p className="text-red-600">{error.name}</p>}
         </div>
         <div className={inputContainer}>
           <label htmlFor="email">
@@ -105,7 +99,7 @@ export function FormPage({ onSubmit }) {
             value={email}
             onChange={updateEmail}
           />
-          {error && <p className="text-red-600">{error}</p>}
+          {error && <p className="text-red-600">{error.email}</p>}
         </div>
         <div className={inputContainer}>
           {/* ส่ง selectedMovie และฟังก์ชันอัปเดตไปยัง SelectedMovie */}
@@ -113,6 +107,7 @@ export function FormPage({ onSubmit }) {
             selectedOption={selectedOption}
             onChange={handleSelectedMovieChange}
           />
+          {error && <p className="text-red-600">{error.selectedOption}</p>}
         </div>
         <div className={inputContainer}>
           <label>ความคิดเห็นเกี่ยวกับหนัง</label>
