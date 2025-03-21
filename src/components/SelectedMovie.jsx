@@ -48,6 +48,7 @@ export function SelectedMovie({ selectedOption, onChange }) {
           );
         })}
       </div>
+      
     </>
   );
 }
