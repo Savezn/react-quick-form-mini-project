@@ -62,7 +62,7 @@ export function FormPage({ onSubmit }) {
     "resize-y border border-gray-300 rounded-md p-2 w-full";
   const resetButton =
     "bg-white border border-gray-300 hover:bg-gray-100 text-black py-2 px-4 rounded";
-  const submitButton = "bg-purple-500 text-white py-2 px-4 rounded";
+  const submitButton = "bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-2 px-4 rounded";
   const buttonContainer = "flex justify-between border-t border-gray-300 pt-6";
 
   return (
@@ -138,16 +138,47 @@ export function FormPage({ onSubmit }) {
   );
 }
 
-export function SummaryPage() {
+export function SummaryPage({ data }) {
   const formPage =
     "flex flex-col w-min-content w-120 h-min-content rounded-b-5xl bg-white shadow-xl my-10";
   const movieSurveyHeader =
-    "text-3xl font-bold bg-purple-600 text-white w-full p-6";
+    "bg-gradient-to-r from-purple-500 to-indigo-500 text-3xl font-bold bg-purple-600 text-white w-full p-6";
+  const summaryContainer = "flex flex-col gap-4 p-4 bg-green-50 border border-green-200 rounded-xl m-6";
+  const buttonStyle =
+    "bg-black text-white py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition mx-6 mb-6";
 
   return (
     <>
       <div className={formPage}>
         <h1 className={movieSurveyHeader}>Movie Survey</h1>
+        <div className={summaryContainer}>
+          <h4 className="text-lg text-green-900">ส่งแบบสำรวจสำเร็จ!</h4>
+          <div className="flex flex-row gap-16 border-b border-gray-300 pb-4">
+            <div className="flex flex-col gap-2 text-gray-500">
+              <p>ชื่อ:</p>
+              <p>อีเมล:</p>
+              <p>หนังที่เลือก:</p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p>{data.name}</p>
+              <p>{data.email}</p>
+              <p className="text-purple-700">{data.selectedOption}</p>
+            </div>
+          </div>
+          {data.comment && (
+            <div className="flex flex-col gap-2">
+              <p className="text-gray-500">ความคิดเห็น:</p>
+              <p className="bg-gray-50 p-4">{data.comment}</p>
+            </div>
+          )}
+        </div>
+        <button
+          className={buttonStyle}
+          onClick={() => window.location.reload()}
+        >
+          ทำแบบสำรวจใหม่
+        </button>
+
       </div>
     </>
   );
