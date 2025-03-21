@@ -1,10 +1,10 @@
 import { useState } from "react";
 import SelectedMovie from "./SelectedMovie";
 
-const formPage = "flex flex-col w-min-content w-1/2 rounded-b-5xl bg-white shadow-xl";
+const formPage = "flex flex-col w-min-content w-120 h-min-content rounded-b-5xl bg-white shadow-xl my-10";
 const movieSurveyHeader = "text-3xl font-bold bg-purple-600 text-white w-full p-6";
-const formContainer = "flex flex-col p-6 bg-white";
-const inputContainer = "flex flex-col gap-2 mb-6";
+const formContainer = "flex flex-col gap-8 p-6 bg-white";
+const inputContainer = "flex flex-col gap-2";
 const primaryInputBox = "border border-gray-300 rounded-md p-2";
 const textareaInputBox =
   "resize-y border border-gray-300 rounded-md p-2 w-full";
