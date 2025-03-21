@@ -19,6 +19,8 @@ export function FormPage() {
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
 
+  const [error, setError] = useState("");
+
   const updateName = (e) => setName(e.target.value);
   const updateEmail = (e) => setEmail(e.target.value);
   const updateComment = (e) => setComment(e.target.value);
